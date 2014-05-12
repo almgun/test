@@ -18,8 +18,11 @@
 
 <div class="row marketing">
   <h4>Angular party trick below</h4>
-	<input ng-model="nsp.var1" type="text"/>
+	<input ng-model="newPerson" type="text"/>
 	{{nsp.var1}}
+
+	<button type="button" ng-click="addPerson()">test</button>
+	<button type="button" ng-click="listPersons()">list</button>
 	<ul>
 		<li ng-repeat = "name in names">{{name}}</li>
 	</ul>
