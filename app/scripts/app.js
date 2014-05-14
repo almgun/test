@@ -15,6 +15,10 @@ angular
 				templateUrl: 'views/main.html',
 				controller: 'MainCtrl'
 			})
+.when('/guest', {
+  templateUrl: 'views/guest.html',
+  controller: 'GuestCtrl'
+})
 			.otherwise({
 				redirectTo: '/'
 			});
