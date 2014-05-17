@@ -1,0 +1,50 @@
+<p>This is the guest view.</p>
+<div class="row">
+	<div class="col-md-6">
+		<table>
+			<tr>
+				<td>First</td>
+				<td><input type="text" ng-model="guest.firstName"/></td>
+			</tr>
+			<tr>
+				<td>Last</td>
+				<td><input type="text" ng-model="guest.lastName"/></td>
+			</tr>
+			<tr>
+				<td>Ref</td>
+				<td><input type="text" ng-model="guest.bookRef"/></td>
+			</tr>
+			<tr>
+				<td>mail</td>
+				<td><input type="text" ng-model="guest.email"/></td>
+			</tr>
+			<tr>
+				<td>phone</td>
+				<td><input type="text" ng-model="guest.phone"/></td>
+			</tr>
+			<tr>
+				<td>check-in</td>
+				<td><input type="date" ng-model="guest.checkIn"/></td>
+			</tr>
+			<tr>
+				<td>check-out</td>
+				<td><input type="date" ng-model="guest.checkOut"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<button type="button" ng-click="add()">Add</button>
+		<button type="button" ng-click="test()">test</button>
+	</div>
+	<div class="col-md-6">{{guestList}}</div>
+</div>
