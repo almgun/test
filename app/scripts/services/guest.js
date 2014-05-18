@@ -2,11 +2,13 @@
 
 angular.module('testApp')
 	.factory('guestrecord', function () {
-
+		var _randomRef = function () {
+			return  "tmp" + _.random(100, 1000);
+		}
 		var rec = {
 			firstName: "",
 			lastName: "",
-			bookRef: "",
+			bookRef: _randomRef(),
 			email: "",
 			phone: "",
 			checkIn: new Date(),
@@ -21,7 +23,7 @@ angular.module('testApp')
 			totPayment: 0,
 			comment: ""
 		};
-		return {
+		var retVal = {
 			create: function (first, last, ref) {
 				var newRec = angular.copy(rec);
 				if (typeof first === 'object') {
@@ -51,7 +53,11 @@ angular.module('testApp')
 					}
 				});
 				return ret;
+			},
+			randomRef: function () {
+				return _randomRef();
 			}
 
 		}
+		return Object.freeze(retVal);
 	});

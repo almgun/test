@@ -7,13 +7,14 @@ angular.module('testApp')
 		var guests = $firebase(guestRef);
 
 		// Public API here
-		return {
+		var retVal =  {
 			test:function(rec) {
 			    guestRef.child('').set(rec);
 			}  ,
 			create: function (rec) {
-				if(rec && rec.bookRef){
+				if(rec){
 					if (guestrecord.duckTest(rec)) {
+						rec.bookRef = rec.bookRef || guestrecord.randomRef();
 						guests.$add(rec);
 					}
 				}
@@ -28,4 +29,5 @@ angular.module('testApp')
 				return guests;
 			}
 		};
+		return Object.freeze(retVal);
 	});

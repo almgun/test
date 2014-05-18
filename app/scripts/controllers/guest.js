@@ -21,7 +21,7 @@ angular.module('testApp')
 
 
 		gl.$on("loaded", function(a) {
-		//	console.log("Initial data received! " + JSON.stringify(a.snapshot.snapshor));
+		//	console.log("Initial data received! " + JSON.stringify(a.snapshot));
 		});
 
 		gl.$on("value", function(a) {

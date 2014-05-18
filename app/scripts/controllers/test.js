@@ -1,34 +1,34 @@
 'use strict';
 
 angular.module('testApp')
-	.controller('TestCtrl', function ($scope, persist) {
-		$scope.myData = [
-			{name: "Moroni", age: 50},
-			{name: "Tiancum", age: 43},
-			{name: "Jacob", age: 27},
-			{name: "Nephi", age: 29},
-			{name: "Enos", age: 34}
-		];
-
-		$scope.mda = [
-			{"bookRef": "00002", "firstName": "sha", "lastName": "ssasaas","test":"sss"},
-			{"bookRef": "0004", "firstName": "test", "lastName": "jjjjjh"},
-			{"bookRef": "0005", "firstName": "hhaa", "lastName": "ahhaah"},
-			{"bookRef": "002", "firstName": "hahah", "lastName": "ahah","test":"aaa"},
-			{"bookRef": "12345", "firstName": "hshs", "lastName": "ahahah"},
-			{"bookRef": "1234", "firstName": "ssaa", "lastName": "asasasa"}
-		];
-		$scope.gridOptions = { data: 'md' };
-
+	.controller('TestCtrl', function ($scope, persist,guestrecord) {
+		$scope.gridOptions = { data: 'md',multiSelect:false };
 		var gl = persist.collection();
 
 		gl.$on("value", function (a) {
 			var data = a.snapshot.value;
+
 			$scope.md = [];
 			_.each(data, function (val) {
-				//	console.log(val);
-				$scope.md.push(val);
+				//console.log("pushing " + JSON.stringify(val))  ;
+				var gr =  guestrecord.create(val);
+				var gr1 = {};
+				gr1.firstName = gr.firstName
+				gr1.lastName = gr.lastName
+				gr1.bookRef = gr.bookRef;
+				gr1.checkIn = (new Date(gr.checkIn)).toLocaleDateString();
+				gr1.checkOut = (new Date(gr.checkOut)).toLocaleDateString();
+
+//				var gr1 = _.pick( gr , function(value, key) {
+//					return key === 'firstName' || key === 'lastName' || key === 'bookRef' || key === 'checkIn';
+//				});
+
+				$scope.md.push(gr1);
 			})
 			console.log("complete update " + JSON.stringify($scope.md));
-		})
+		});
+		$scope.create = function() {
+			console.log('create..')
+			persist.create($scope.guest);
+		}
 	});
